@@ -31,7 +31,7 @@ This is **Project 2** in a 4-part enterprise IAM portfolio series.
 - [User Registration Experience](#-user-registration-experience)
 - [MFA Authentication Test](#-mfa-authentication-test)
 - [What I Learned](#-what-i-learned)
-- [Next Project](#-next-project)
+- [Next Project](#-next-project--identity-lifecycle-jml)
 - [Repo Structure](#-repo-structure)
 
 ---
