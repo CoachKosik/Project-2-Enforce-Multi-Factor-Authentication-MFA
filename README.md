@@ -2,31 +2,34 @@
   <img src="screenshots/mfa_banner.png" width="100%">
 </p>
 
-<h1 align="center">🛡 Project 2 — Enforce MFA for All Users</h1>
-<h3 align="center">Microsoft Entra ID ▸ Zero Trust Authentication ▸ Security Hardening</h3>
+<h1 align="center">🛡 Project 2 — Enforce Multi-Factor Authentication (MFA)</h1>
+<h3 align="center">Microsoft Entra ID ▸ Zero Trust Authentication ▸ Enterprise IAM Lab</h3>
 
 ---
 
 ## 📌 Overview
 
-This project implements **Multi-Factor Authentication (MFA) enforcement** across all identities inside Microsoft Entra ID (Azure AD), simulating real IAM analyst responsibilities including:
+This project implements **Multi-Factor Authentication (MFA) enforcement** inside Microsoft Entra ID as required by modern Zero Trust security frameworks.
 
-✔ Designing and validating Conditional Access policies  
-✔ Enforcing MFA without relying on end-user enrollment  
-✔ Blocking insecure legacy authentication protocols  
-✔ Capturing audit-ready evidence for hiring managers & security assessors  
+The lab simulates **real IAM analyst responsibilities**, including:
 
-This is **Project 2** in a **4-project Enterprise IAM portfolio series**.
+✔ Designing secure authentication method policies  
+✔ Targeting enforcement via identity-scoped groups  
+✔ Blocking legacy insecure access paths  
+✔ Capturing **audit-ready evidence** for compliance teams & hiring managers
+
+This is **Project 2** in a 4-part enterprise IAM portfolio series.
 
 ---
 
 ## 📚 Table of Contents
 
 - [Objectives](#-objectives)
-- [Baseline MFA Policy](#-baseline-mfa-policy)
-- [Conditional Access Configuration](#-conditional-access-configuration)
-- [Legacy Authentication Blocking](#-legacy-authentication-blocking)
-- [Test Validation](#-test-validation)
+- [Authentication Method Policies](#-authentication-method-policies)
+- [Group-Targeted MFA Enforcement](#-group-targeted-mfa-enforcement)
+- [Registration Campaign](#-registration-campaign)
+- [User Registration Experience](#-user-registration-experience)
+- [MFA Authentication Test](#-mfa-authentication-test)
 - [What I Learned](#-what-i-learned)
 - [Next Project](#-next-project)
 - [Repo Structure](#-repo-structure)
@@ -37,114 +40,97 @@ This is **Project 2** in a **4-project Enterprise IAM portfolio series**.
 
 | Objective | Outcome |
 |-----------|---------|
-| Require MFA for all users | Password-only sign-in eliminated |
-| Block legacy auth | SMTP / IMAP / POP disabled |
-| Align to Zero Trust | “Verify explicitly” implemented |
-| Capture proof | Screenshot evidence for audit review |
+| Enforce MFA | Microsoft Authenticator required |
+| Control rollout | Enforcement limited to IAM MFA group |
+| Verify Zero Trust | “Verify explicitly” enforced at sign-in |
+| Capture audit evidence | Screenshots included for every control |
 
 ---
 
-## 🟦 Baseline MFA Policy
+## 🔐 Authentication Method Policies
 
-| Setting | Value |
-|---------|-------|
-| **Policy Name** | `01 - Require MFA for All Users` |
-| **Assignment** | All Users |
-| **Grant Controls** | Require MFA |
-| **Mode** | Enabled |
-
-**📸 Proof — Policy Overview**
-
-![Policy Overview](screenshots/CA-Policy01-Overview.png)
-
----
-
-## 🔐 Conditional Access Configuration
-
-### 📋 Assignments
 <details>
-<summary><strong>Click to expand</strong></summary>
+<summary><strong>📸 Authentication Method Policy View</strong></summary>
 
-✔ All users included  
-✖ No service principals  
-
-![Assignments](screenshots/CA-Policy01-Assignments.png)
+![Authentication Method Policy](screenshots/auth-methods-policy.png)
 
 </details>
 
 ---
 
-### 🎛 Conditions
+## 🎯 Group-Targeted MFA Enforcement
+
+**Target Group:** `GG-MFA-Enforced`  
+**Authentication Method:** Microsoft Authenticator  
+**Mode:** Enabled
+
 <details>
-<summary><strong>Click to expand</strong></summary>
+<summary><strong>📸 Microsoft Authenticator Policy Targeting</strong></summary>
 
-🌐 Applies to all cloud apps  
-🟦 No device exclusions  
-🟥 No location exemptions  
-
-![Conditions](screenshots/CA-Policy01-Conditions.png)
+![Microsoft Authenticator Settings](screenshots/mfa-authenticator-enabled.png)  
+![Microsoft Authenticator Settings 2](screenshots/mfa-authenticator-enabled-2.png)
 
 </details>
 
 ---
 
-### 🛑 Grant Controls
+## 🏁 Registration Campaign (Required Enrollment)
+
 <details>
-<summary><strong>Click to expand</strong></summary>
+<summary><strong>📸 Registration Campaign Settings</strong></summary>
 
-✔ Require Multi-Factor Authentication  
-⛔ No password-only authentication  
-
-![Grant Controls](screenshots/CA-Policy01-Grant.png)
+![Registration Campaign](screenshots/mfa-registration-policy.png)
 
 </details>
 
 ---
 
-## 🚫 Legacy Authentication Blocking
+## 👤 User Registration Experience
 
-| Policy | Action |
-|--------|--------|
-| `03 – Block Legacy Auth` | BLOCK |
+<details>
+<summary><strong>📸 User prompted for more information</strong></summary>
 
-**Why this matters**  
-🔸 99% of breached accounts were not using MFA  
-🔸 Legacy protocols bypass Conditional Access  
-🔸 Attackers use IMAP & SMTP spray attacks
+![More Information Required](screenshots/mfa-more-information-required.png)
 
-**📸 Proof**
+</details>
 
-![Block Legacy Auth](screenshots/CA-Policy03-Grant.png)
+<details>
+<summary><strong>📸 Authenticator success confirmation</strong></summary>
+
+![Registration Success](screenshots/mfa-registration-success.png)
+
+</details>
 
 ---
 
-## 🧪 Test Validation
+## 🧪 MFA Authentication Test
 
-| Test User | Result |
-|-----------|--------|
-| Eddie Spark | MFA Prompt |
-| Nathan Dash | MFA Prompt |
-| Maverick Blaze | MFA Prompt |
+**User attempts sign-in → Forced MFA challenge**
 
-🔹 Testing confirms MFA enforced **before first access attempt**  
-🔹 No bypass paths remained after policy enforcement
+<details>
+<summary><strong>📸 Authentication Prompt</strong></summary>
+
+![Approve MFA Sign-In](screenshots/mfa-authentication-prompt.png)
+
+</details>
 
 ---
 
 ## 🧠 What I Learned
 
-✔ MFA enforcement must NOT rely on user enrollment  
-✔ Legacy auth must be explicitly blocked — NOT assumed disabled  
-✔ Conditional Access is the **control plane for Zero Trust**  
-✔ Documentation separates **entry-level “lab builders”** from **real IAM analysts**
+✔ MFA MUST be enforced — **not just offered**  
+✔ Group-based enforcement enables controlled rollout  
+✔ Authentication Methods policy now replaces legacy MFA portal  
+✔ Documentation is a **core IAM job skill**, not an afterthought  
+✔ Audit evidence must show **policy → registration → successful enforcement**
 
 ---
 
-## 🧩 Where This Fits in the Portfolio
+## ➤ Next Project — Identity Lifecycle (JML)
 
-**➡ Next Project:**  
-🔗 Identity Lifecycle Automation (Joiners ▸ Movers ▸ Leavers)  
-https://github.com/CoachKosik/Project-3-Entra-ID-Azure-AD-Identity-Lifecycle-JML  
+**Joiners ▸ Movers ▸ Leavers ▸ Full Access Proven**
+
+🔗 https://github.com/CoachKosik/Project-3-Entra-ID-Azure-AD-Identity-Lifecycle-JML
 
 ---
 
@@ -155,11 +141,13 @@ azure-ad-mfa-enforcement/
 │ README.md
 └── screenshots/
     ├─ mfa_banner.png
-    ├─ CA-Policy01-Overview.png
-    ├─ CA-Policy01-Assignments.png
-    ├─ CA-Policy01-Conditions.png
-    ├─ CA-Policy01-Grant.png
-    ├─ CA-Policy03-Grant.png
-⭐ If this project helped you, please STAR the repo
+    ├─ auth-methods-policy.png
+    ├─ mfa-authenticator-enabled.png
+    ├─ mfa-authenticator-enabled-2.png
+    ├─ mfa-registration-policy.png
+    ├─ mfa-more-information-required.png
+    ├─ mfa-registration-success.png
+    ├─ mfa-authentication-prompt.png
+⭐ STAR this repo if you're studying IAM
 🧑‍💼 Recruiters DO check GitHub activity
-🧠 Full IAM portfolio → https://github.com/CoachKosik
+🧠 Full portfolio → https://github.com/CoachKosik
