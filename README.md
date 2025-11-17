@@ -9,16 +9,14 @@
 
 ## 📌 Overview
 
-This lab enforces **Multi-Factor Authentication (MFA)** as a baseline security requirement for all identities.
+This project implements **Multi-Factor Authentication (MFA) enforcement** across all identities inside Microsoft Entra ID (Azure AD), simulating real IAM analyst responsibilities including:
 
-It simulates **real-world IAM analyst responsibilities**, including:
+✔ Designing and validating Conditional Access policies  
+✔ Enforcing MFA without relying on end-user enrollment  
+✔ Blocking insecure legacy authentication protocols  
+✔ Capturing audit-ready evidence for hiring managers & security assessors  
 
-✔ Designing secure Conditional Access rules  
-✔ Documenting enforcement logic for auditors & hiring managers  
-✔ Preventing legacy insecure authentication methods  
-✔ Testing policy behavior for different user personas
-
-This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
+This is **Project 2** in a **4-project Enterprise IAM portfolio series**.
 
 ---
 
@@ -30,7 +28,7 @@ This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
 - [Legacy Authentication Blocking](#-legacy-authentication-blocking)
 - [Test Validation](#-test-validation)
 - [What I Learned](#-what-i-learned)
-- [Next Project](#-next-project-identity-lifecycle-jml)
+- [Next Project](#-next-project)
 - [Repo Structure](#-repo-structure)
 
 ---
@@ -39,10 +37,10 @@ This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
 
 | Objective | Outcome |
 |-----------|---------|
-| Require MFA for all users | Modern authentication enforced |
-| Block legacy auth | Prevent password-only logins |
-| Align to Zero Trust | Verify explicitly on every sign-in |
-| Provide audit evidence | Screenshot lab documentation |
+| Require MFA for all users | Password-only sign-in eliminated |
+| Block legacy auth | SMTP / IMAP / POP disabled |
+| Align to Zero Trust | “Verify explicitly” implemented |
+| Capture proof | Screenshot evidence for audit review |
 
 ---
 
@@ -50,20 +48,22 @@ This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
 
 | Setting | Value |
 |---------|-------|
-| Policy Name | `01 - Require MFA for All Users` |
-| Assignment | All users |
-| Grant Controls | Require MFA |
-| Mode | Enabled |
+| **Policy Name** | `01 - Require MFA for All Users` |
+| **Assignment** | All Users |
+| **Grant Controls** | Require MFA |
+| **Mode** | Enabled |
 
-**Screenshot**
+**📸 Proof — Policy Overview**
 
 ![Policy Overview](screenshots/CA-Policy01-Overview.png)
 
 ---
 
 ## 🔐 Conditional Access Configuration
-<details open>
-<summary><strong>📋 Assignments</strong></summary>
+
+### 📋 Assignments
+<details>
+<summary><strong>Click to expand</strong></summary>
 
 ✔ All users included  
 ✖ No service principals  
@@ -72,21 +72,28 @@ This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
 
 </details>
 
-<details>
-<summary><strong>🎛 Conditions</strong></summary>
+---
 
-🌐 All cloud apps  
+### 🎛 Conditions
+<details>
+<summary><strong>Click to expand</strong></summary>
+
+🌐 Applies to all cloud apps  
 🟦 No device exclusions  
+🟥 No location exemptions  
 
 ![Conditions](screenshots/CA-Policy01-Conditions.png)
 
 </details>
 
+---
+
+### 🛑 Grant Controls
 <details>
-<summary><strong>🛑 Grant Controls</strong></summary>
+<summary><strong>Click to expand</strong></summary>
 
 ✔ Require Multi-Factor Authentication  
-⛔ No password-only auth permitted  
+⛔ No password-only authentication  
 
 ![Grant Controls](screenshots/CA-Policy01-Grant.png)
 
@@ -98,11 +105,14 @@ This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
 
 | Policy | Action |
 |--------|--------|
-| `03 – Block Legacy Auth` | Block access |
+| `03 – Block Legacy Auth` | BLOCK |
 
-**Why?**  
-🔸 99% of breached accounts were *not using MFA*  
-🔸 SMTP, POP, IMAP = **password-only** = attacker heaven
+**Why this matters**  
+🔸 99% of breached accounts were not using MFA  
+🔸 Legacy protocols bypass Conditional Access  
+🔸 Attackers use IMAP & SMTP spray attacks
+
+**📸 Proof**
 
 ![Block Legacy Auth](screenshots/CA-Policy03-Grant.png)
 
@@ -110,26 +120,31 @@ This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
 
 ## 🧪 Test Validation
 
-| Test User | Country | Result |
-|-----------|---------|--------|
-| Eddie Spark | USA | MFA Prompt |
-| Maverick Blaze | USA | MFA Prompt |
-| Nathan Dash | USA | MFA Prompt |
+| Test User | Result |
+|-----------|--------|
+| Eddie Spark | MFA Prompt |
+| Nathan Dash | MFA Prompt |
+| Maverick Blaze | MFA Prompt |
+
+🔹 Testing confirms MFA enforced **before first access attempt**  
+🔹 No bypass paths remained after policy enforcement
 
 ---
 
 ## 🧠 What I Learned
 
-✔ MFA cannot rely on end-user enrollment  
-✔ Conditional Access provides scalable enforcement  
-✔ Legacy authentication must be blocked explicitly  
-✔ Documentation is **as important as configuration**
+✔ MFA enforcement must NOT rely on user enrollment  
+✔ Legacy auth must be explicitly blocked — NOT assumed disabled  
+✔ Conditional Access is the **control plane for Zero Trust**  
+✔ Documentation separates **entry-level “lab builders”** from **real IAM analysts**
 
 ---
 
-## ➤ **Next Project — Identity Lifecycle (JML)**
+## 🧩 Where This Fits in the Portfolio
 
-🔗 https://github.com/CoachKosik/Project-3-Entra-ID-Azure-AD-Identity-Lifecycle-JML
+**➡ Next Project:**  
+🔗 Identity Lifecycle Automation (Joiners ▸ Movers ▸ Leavers)  
+https://github.com/CoachKosik/Project-3-Entra-ID-Azure-AD-Identity-Lifecycle-JML  
 
 ---
 
@@ -139,16 +154,12 @@ This is **Project 2** in a **4-part Enterprise IAM portfolio series**.
 azure-ad-mfa-enforcement/
 │ README.md
 └── screenshots/
-├─ mfa_banner.png
-├─ CA-Policy01-Overview.png
-├─ CA-Policy01-Assignments.png
-├─ CA-Policy01-Conditions.png
-├─ CA-Policy01-Grant.png
-├─ CA-Policy03-Grant.png
-```
-
----
-
-⭐ **If this project helped you, please STAR the repo**  
-👀 Recruiters *do* check your GitHub activity  
-🧑‍💻 Follow the full Zero Trust IAM portfolio → https://github.com/CoachKosik
+    ├─ mfa_banner.png
+    ├─ CA-Policy01-Overview.png
+    ├─ CA-Policy01-Assignments.png
+    ├─ CA-Policy01-Conditions.png
+    ├─ CA-Policy01-Grant.png
+    ├─ CA-Policy03-Grant.png
+⭐ If this project helped you, please STAR the repo
+🧑‍💼 Recruiters DO check GitHub activity
+🧠 Full IAM portfolio → https://github.com/CoachKosik
