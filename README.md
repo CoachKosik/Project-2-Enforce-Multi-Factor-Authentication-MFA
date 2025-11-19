@@ -150,6 +150,8 @@ entra-id-mfa-enforcement/
     ├─ mfa-authentication-prompt.png
 ```
 
-⭐ STAR this repo if you're studying IAM<br>
-🧑‍💼 Recruiters DO check GitHub activity<br>
-🧠 Full portfolio → https://github.com/CoachKosik
+---
+
+⭐ **If this project helped you, please STAR the repo**<br>
+🧑‍💻 Full IAM Portfolio → https://github.com/CoachKosik<br>
+🧠 *Proof-based IAM > text-only IAM*
