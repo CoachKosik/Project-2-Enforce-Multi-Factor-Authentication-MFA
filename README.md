@@ -137,7 +137,7 @@ This is **Project 2** in a 4-part enterprise IAM portfolio series.
 ## 📂 Repo Structure
 
 ```text
-azure-ad-mfa-enforcement/
+entra-id-mfa-enforcement/
 │ README.md
 └── screenshots/
     ├─ mfa_banner.png
@@ -148,6 +148,8 @@ azure-ad-mfa-enforcement/
     ├─ mfa-more-information-required.png
     ├─ mfa-registration-success.png
     ├─ mfa-authentication-prompt.png
-⭐ STAR this repo if you're studying IAM
-🧑‍💼 Recruiters DO check GitHub activity
+```
+
+⭐ STAR this repo if you're studying IAM<br>
+🧑‍💼 Recruiters DO check GitHub activity<br>
 🧠 Full portfolio → https://github.com/CoachKosik
