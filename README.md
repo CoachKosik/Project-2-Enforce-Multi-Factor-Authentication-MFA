@@ -167,12 +167,13 @@ entra-id-mfa-enforcement/
 ---
 
 ## 🧩 Skills Demonstrated
-- Microsoft Entra ID (Azure AD) administration
-- User lifecycle basics (creation, attributes, governance)
-- Security groups & least-privilege RBAC
-- Directory roles & scoped access assignments
-- Identity architecture: employees vs contractors
-- Audit documentation (screenshots, access justification)
+- Microsoft Entra ID Authentication Methods policy configuration
+- MFA enforcement using Conditional Access (Require MFA)
+- End-user MFA registration flow testing (Authenticator app)
+- Registration Campaign deployment & enrollment validation
+- Legacy authentication blocking (POP/IMAP/SMTP hardening)
+- Modern authentication alignment with Zero Trust
+- Audit-ready MFA documentation & policy evidence collection
 
 ---
 
