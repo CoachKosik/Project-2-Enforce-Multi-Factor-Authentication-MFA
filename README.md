@@ -7,6 +7,13 @@
 
 ---
 
+### Authentication Methods · Registration Campaign · MFA Policy Testing
+
+> **TL;DR:** Enforced MFA across all identities using Authentication Methods, Conditional Access, and real user registration flows.  
+> Focus: modern authentication, legacy auth blocking, Zero Trust enforcement.
+
+---
+
 ## 📌 Overview
 
 This project implements **Multi-Factor Authentication (MFA) enforcement** inside Microsoft Entra ID as required by modern Zero Trust security frameworks.
@@ -149,6 +156,16 @@ entra-id-mfa-enforcement/
     ├─ mfa-registration-success.png
     ├─ mfa-authentication-prompt.png
 ```
+
+---
+
+## 🧩 Skills Demonstrated
+- Microsoft Entra ID (Azure AD) administration
+- User lifecycle basics (creation, attributes, governance)
+- Security groups & least-privilege RBAC
+- Directory roles & scoped access assignments
+- Identity architecture: employees vs contractors
+- Audit documentation (screenshots, access justification)
 
 ---
 
