@@ -7,10 +7,10 @@
 
 ---
 
-### Authentication Methods · Registration Campaign · MFA Policy Testing
+#### Authentication Methods · Registration Campaign · MFA Policy Testing
 
 > **TL;DR:** Enforced MFA across all identities using Authentication Methods, Conditional Access, and real user registration flows.  
-> Focus: modern authentication, legacy auth blocking, Zero Trust enforcement.
+> **Focus:** modern authentication, legacy auth blocking, Zero Trust enforcement.
 
 ---
 
