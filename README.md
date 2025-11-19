@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="screenshots/mfa_banner.png" width="100%">
+  <img src="screenshots/project_2_banner.png" width="100%">
 </p>
 
 <h1 align="center">🛡 Project 2 — Enforce Multi-Factor Authentication (MFA)</h1>
